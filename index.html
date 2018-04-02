@@ -1,0 +1,83 @@
+<!DOCTPYE html>
+<html>
+<head>
+<title>Forecast</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="mainsty.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var day1;
+var day2;
+var day3;
+var day4;
+var day5;
+var loc;
+
+function load(){
+	loc = document.getElementById("answer").value;
+	var script = document.createElement('script');
+    script.src = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + loc + "')&format=json&callback=callbackFunction";
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
+var callbackFunction = function(data) {
+    var fore = data.query.results.channel.item.forecast;
+		day1 = [fore[0].day, fore[0].date, fore[0].high, fore[0].low, fore[0].text, fore[0].code];
+		day2 = [fore[1].day, fore[1].date, fore[1].high, fore[1].low, fore[1].text, fore[1].code];
+		day3 = [fore[2].day, fore[2].date, fore[2].high, fore[2].low, fore[2].text, fore[2].code];
+		day4 = [fore[3].day, fore[3].date, fore[3].high, fore[3].low, fore[3].text, fore[3].code];
+		day5 = [fore[4].day, fore[4].date, fore[4].high, fore[4].low, fore[4].text, fore[4].code];
+		  
+		document.getElementById("demo").innerHTML =
+			"Your forecast for " + loc + "!" ;
+    
+		document.getElementById("day1").innerHTML =
+			"Today is " + day1[0] + ", " + day1[1] + "<br/> " + day1[4] +" <br/>High: " + day1[2] + " <br/>Low: " + day1[3] + " " ;
+			
+		document.getElementById("day2").innerHTML =
+			"" + day2[0] + ", " + day2[1] + "<br/> " + day2[4] +" <br/>High: " + day2[2] + " <br/>Low: " + day2[3] + "<br/> " ;
+			
+		document.getElementById("day3").innerHTML =
+			"" + day3[0] + ", " + day3[1] + "<br/> " + day3[4] +" <br/>High: " + day3[2] + " <br/>Low: " + day3[3] + "<br/> " ;
+			
+		document.getElementById("day4").innerHTML =
+			"" + day4[0] + ", " + day4[1] + "<br/> " + day4[4] +" <br/>High: " + day4[2] + " <br/>Low: " + day4[3] + "<br/> " ;
+
+		document.getElementById("day5").innerHTML =
+			"" + day5[0] + ", " + day5[1] + "<br/> " + day5[4] +" <br/>High: " + day5[2] + " <br/>Low: " + day5[3] + "<br/> " ;
+			
+		if((day1[5] >= 26)&&(day1[5] <= 30)) {
+			document.getElementById('main').setAttribute("style","background-image:url(cloudy.jpg)");
+		}else if((day1[5] >= 13)&&(day1[5] <= 18)||(day1[5]==41)||(day1[5]== 42)||(day1[5] ==43)||(day1[5] ==7)){
+			document.getElementById('main').setAttribute("style","background-image:url(snow.jpg)");
+		}else if ((day1[5] ==32)||(day1[5]==33)||(day1[5]== 34)){
+			document.getElementById('main').setAttribute("style","background-image:url(sunny.jpg)");
+		}else if ((day1[5] >= 1)&&(day1[5] <= 6)||(day1[5] >= 9)&&(day1[5] <= 12)||(day1[5] >= 37)&&(day1[5] <= 40)){
+			document.getElementById('main').setAttribute("style","background-image:url(rain.jpg)");
+		}else {
+			document.getElementById('main').setAttribute("style","background-image:url(main.jpg)");
+		}
+}
+</script>
+</head>
+
+<body id="main" style="background-image:url(main.jpg)">
+<div class="gridcontainer">
+	<div class="center gridmenu">
+		<input id="answer" type="text" placeholder="Enter Zipcode or City, State" />
+		<button name="button" onclick="load()">
+			Submit
+		</button>
+		<h1 id="demo"></h1>
+		<p id="day1"></p>
+	</div>
+
+	<div id="fiveday">
+		<div id="day2"></div>
+		<div id="day3"></div>
+		<div id="day4"></div>
+		<div id="day5"></div>
+	</div>
+
+</div>
+</body>
+</html>

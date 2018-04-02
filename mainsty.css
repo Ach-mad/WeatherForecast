@@ -1,0 +1,93 @@
+.center {
+	display:inline-block;
+	text-align:center;
+	width:50%;
+}
+
+@media only screen and (max-width: 500px) {
+    .gridmenu {
+        width: 100%;
+    }
+
+    .gridmain {
+        width: 100%;
+    }
+
+    .main {
+        padding: 1.0121457489878542510121457489879%;
+    }
+
+    .center {
+        margin-right: 0;
+        float: left;
+    }
+}
+#demo {
+	color:#4f4946;
+	font-family:"Lucida Sans", Verdana, sans-serif;
+}
+#day1 {
+	color:#4f4946;
+	font-size:160%;
+	display:inline-block;
+	font-family:"Lucida Sans", Verdana, sans-serif;
+}
+
+#fiveday {
+	height:100%;
+	float:right;
+	position:relative;
+	display:inline-block;
+}
+
+#day2 {
+	border-style: solid;
+    border-width: 1px;
+	border-color:white;
+	background-color:#e0b388;
+	opacity:.8;
+	color:#31333f;
+	font-size:150%;
+	margin:5%;
+	display:inline-block;
+	
+}
+#day3 {
+	border-style: solid;
+    border-width: 1px;
+	border-color:white;
+	background-color:#e0b388;
+	opacity:.8;
+	border-width:thin;
+	color:#3a3c4c;
+	font-size:150%;
+	margin:5%;
+	display:inline-block;
+	
+}
+#day4 {
+	border-style: solid;
+    border-width: 1px;
+	border-color:white;
+	background-color:#e0b388;
+	opacity:.8;
+	border-width:thin;
+	color:#3e4051;
+	font-size:150%;
+	margin:5%;
+	display:inline-block;
+	
+}
+#day5 {
+	border-style: solid;
+    border-width: 1px;
+	border-color:white;
+	background-color:#e0b388;
+	opacity:.8;
+	border-width:thin;
+	color:#3d3f51;
+	font-size:150%;
+	margin:5%;
+	display:inline-block;
+	
+}
